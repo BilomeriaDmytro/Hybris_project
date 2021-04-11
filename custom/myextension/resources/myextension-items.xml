@@ -17,6 +17,14 @@
 		</enumtype>
 	</enumtypes>
 
+	<relations>
+		<relation code="FilmActorRelation" localized="false">
+			<deployment table="FilmsActors" typecode="20003"/>
+			<sourceElement qualifier="actors" type="Actor" cardinality="many"/>
+			<targetElement qualifier="films" type="Film" cardinality="many"/>
+		</relation>
+	</relations>
+
 	<itemtypes>
 		<itemtype code="CarProduct" extends="Product">
 			<attributes>
@@ -28,6 +36,14 @@
 					<persistence type="property"/>
 				</attribute>
 			</attributes>
+		</itemtype>
+
+		<itemtype code="Film" extends="GenericItem">
+			<deployment table="Film" typecode = "20001" />
+		</itemtype>
+
+		<itemtype code="Actor" extends="GenericItem">
+			<deployment table="Actor" typecode="20002"/>
 		</itemtype>
 	</itemtypes>
 </items>
