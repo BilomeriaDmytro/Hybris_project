@@ -1,0 +1,19 @@
+INSERT_UPDATE UserGroup; UID[unique=true]
+                       ; mygroup
+
+$START_USERRIGHTS
+        Type; UID; MemberOfGroups; Target;read;change;create;delete;change_perm
+        UserGroup; mygroup;employeegroup;
+        ;;;Product;+;+;+;+;-
+        ;;;Product.name;;-;;;
+$END_USERRIGHTS
+
+INSERT_UPDATE Employee;uid[unique=true];name;sessionLanguage(isocode);sessionCurrency(isocode);password
+                      ;employee;employee;en;EUR;1111
+
+# Recommended way to set relations. Getting error - "Cannot unwrap the Remote. 'GenericItemEJBImpl' doesn't expose the Remote."
+INSERT_UPDATE PrincipalGroupRelation;source(uid)[unique=true];target(uid)
+                                    ;employee;mygroup;
+
+INSERT_UPDATE Employee;uid[unique=true];groups(uid);password
+                      ;employee2;mygroup;2222

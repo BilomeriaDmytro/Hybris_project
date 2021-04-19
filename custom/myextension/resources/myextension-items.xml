@@ -9,6 +9,41 @@
 <items 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		  xsi:noNamespaceSchemaLocation="items.xsd">
 
+	<enumtypes>
+		<enumtype code="Colors">
+			<value code="Black"/>
+			<value code="Yellow"/>
+			<value code="White"/>
+		</enumtype>
+	</enumtypes>
 
+	<relations>
+		<relation code="FilmActorRelation" localized="false">
+			<deployment table="FilmsActors" typecode="20003"/>
+			<sourceElement qualifier="actors" type="Actor" cardinality="many"/>
+			<targetElement qualifier="films" type="Film" cardinality="many"/>
+		</relation>
+	</relations>
 
+	<itemtypes>
+		<itemtype code="CarProduct" extends="Product">
+			<attributes>
+				<attribute qualifier="weight" type="java.lang.Float">
+					<persistence type="property"/>
+				</attribute>
+
+				<attribute qualifier="color" type="Colors">
+					<persistence type="property"/>
+				</attribute>
+			</attributes>
+		</itemtype>
+
+		<itemtype code="Film" extends="GenericItem">
+			<deployment table="Film" typecode = "20001" />
+		</itemtype>
+
+		<itemtype code="Actor" extends="GenericItem">
+			<deployment table="Actor" typecode="20002"/>
+		</itemtype>
+	</itemtypes>
 </items>
