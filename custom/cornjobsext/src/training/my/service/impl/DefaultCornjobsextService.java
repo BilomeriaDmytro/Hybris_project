@@ -17,12 +17,13 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Required;
-import training.my.service.MyextensionService;
+
+import training.my.service.CornjobsextService;
 
 
-public class DefaultMyextensionService implements MyextensionService
+public class DefaultCornjobsextService implements CornjobsextService
 {
-	private static final Logger LOG = LoggerFactory.getLogger(DefaultMyextensionService.class);
+	private static final Logger LOG = LoggerFactory.getLogger(DefaultCornjobsextService.class);
 
 	private MediaService mediaService;
 	private ModelService modelService;
@@ -32,7 +33,6 @@ public class DefaultMyextensionService implements MyextensionService
 	public String getHybrisLogoUrl(final String logoCode)
 	{
 		final MediaModel media = mediaService.getMedia(logoCode);
-
 
 		// Keep in mind that with Slf4j you don't need to check if debug is enabled, it is done under the hood.
 		LOG.debug("Found media [code: {}]", media.getCode());
@@ -74,7 +74,7 @@ public class DefaultMyextensionService implements MyextensionService
 
 	private InputStream getImageStream()
 	{
-		return DefaultMyextensionService.class.getResourceAsStream("/myextension/sap-hybris-platform.png");
+		return DefaultCornjobsextService.class.getResourceAsStream("/cornjobsext/sap-hybris-platform.png");
 	}
 
 	@Required
