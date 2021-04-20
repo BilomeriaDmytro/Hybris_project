@@ -5,6 +5,7 @@ package training.my.service.impl;
 
 import de.hybris.platform.catalog.model.CatalogUnawareMediaModel;
 import de.hybris.platform.core.model.media.MediaModel;
+import de.hybris.platform.core.model.user.UserModel;
 import de.hybris.platform.servicelayer.exceptions.SystemException;
 import de.hybris.platform.servicelayer.media.MediaService;
 import de.hybris.platform.servicelayer.model.ModelService;
@@ -32,6 +33,7 @@ public class DefaultMyextensionService implements MyextensionService
 	public String getHybrisLogoUrl(final String logoCode)
 	{
 		final MediaModel media = mediaService.getMedia(logoCode);
+
 
 
 		// Keep in mind that with Slf4j you don't need to check if debug is enabled, it is done under the hood.
