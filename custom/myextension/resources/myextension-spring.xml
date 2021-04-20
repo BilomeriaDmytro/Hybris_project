@@ -28,4 +28,35 @@
         <property name="orderRepository" ref="orderRepository"/>
     </bean>
 
+    <!-- Product data populator -->
+    <bean id = "productDataPopulator" class="training.my.facades.populators.productdata.ProductDataPopulator"/>
+
+    <!-- Product data converter -->
+    <bean id ="productDataConverter" parent="abstractPopulatingConverter">
+        <property name="targetClass" value="de.hybris.platform.commercefacades.product.data.ProductData"/>
+        <property name="populators">
+            <list merge="true">
+                <ref bean="productDataPopulator" />
+            </list>
+        </property>
+    </bean>
+
+    <!-- Facade
+    <bean id="defaultProductDataFacade" class="training.my.facades.impl.DefaultProductDataFacade">
+        <property name="productDataConverter" ref="productDataConverter"/>
+    </bean>-->
+
+    <!-- Age interceptor for user type -->
+    <bean id="ageValidateInterceptor" class="training.my.service.interceptors.user.AgeValidateInterceptor" autowire="byName"/>
+    <bean id="ageValidateInterceptorMapping"
+          class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+        <property name="interceptor" ref="ageValidateInterceptor"/>
+        <property name="typeCode" value="User"/>
+    </bean>
+
+    <!-- CartEntryListener -->
+    <bean id="addToCartListener" class="training.my.events.addToCartListener" parent="abstractEventListener">
+        <property name="modelService" ref="modelService"/>
+    </bean>
+
 </beans>

@@ -9,6 +9,35 @@
 <items 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		  xsi:noNamespaceSchemaLocation="items.xsd">
 
+	<enumtypes>
+		<enumtype code="Colors">
+			<value code="Black"/>
+			<value code="Yellow"/>
+			<value code="White"/>
+		</enumtype>
+	</enumtypes>
 
+	<itemtypes>
+		<itemtype code="User" autocreate="false" generate="false">
+			<attributes>
+				<attribute qualifier="age" type="java.lang.Integer">
+					<modifiers read="true" write="true"/>
+					<persistence type="property"/>
+				</attribute>
+			</attributes>
+		</itemtype>
+
+		<itemtype code="CarProduct" extends="Product">
+			<attributes>
+				<attribute qualifier="weight" type="java.lang.Float">
+					<persistence type="property"/>
+				</attribute>
+
+				<attribute qualifier="color" type="Colors">
+					<persistence type="property"/>
+				</attribute>
+			</attributes>
+		</itemtype>
+	</itemtypes>
 
 </items>
