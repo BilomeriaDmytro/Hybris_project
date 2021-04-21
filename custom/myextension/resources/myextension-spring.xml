@@ -29,9 +29,10 @@
     </bean>
 
     <!-- Product data populator -->
-    <bean id = "productDataPopulator" class="training.my.facades.populators.productdata.ProductDataPopulator"/>
+    <bean id = "productDataPopulator" class="training.my.facades.populator.ProductPopulator"/>
 
     <!-- Product data converter -->
+    <alias name="productDataConverter" alias="productConverter"/>
     <bean id ="productDataConverter" parent="abstractPopulatingConverter">
         <property name="targetClass" value="de.hybris.platform.commercefacades.product.data.ProductData"/>
         <property name="populators">
@@ -41,10 +42,10 @@
         </property>
     </bean>
 
-    <!-- Facade
+    <!-- Facade -->
     <bean id="defaultProductDataFacade" class="training.my.facades.impl.DefaultProductDataFacade">
-        <property name="productDataConverter" ref="productDataConverter"/>
-    </bean>-->
+        <property name="productConverter" ref="productConverter"/>
+    </bean>
 
     <!-- Age interceptor for user type -->
     <bean id="ageValidateInterceptor" class="training.my.service.interceptors.user.AgeValidateInterceptor" autowire="byName"/>
