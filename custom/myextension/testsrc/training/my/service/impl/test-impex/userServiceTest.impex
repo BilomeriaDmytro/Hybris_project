@@ -1,0 +1,5 @@
+INSERT_UPDATE Currency;isocode[unique=true]; name
+                      ;EUR;EUR
+INSERT_UPDATE Employee;uid[unique=true];name;sessionLanguage(isocode);sessionCurrency(isocode);password
+                      ;employee;employee;en;EUR;1111
+                      ;employee2;employee2;en;EUR;1111
