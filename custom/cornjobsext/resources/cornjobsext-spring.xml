@@ -23,4 +23,6 @@
     </bean>
 
     <bean id="myJobPerformable" class="training.my.cronjobs.MyJobPerformable" parent="abstractJobPerformable"/>
+
+    <bean id="countOfUsersJobPerformable" class="training.my.cronjobs.CountOfUsersJobPerformable" parent="abstractJobPerformable"/>
 </beans>

@@ -16,5 +16,11 @@
 				  extends="CronJob"
 				  autocreate="true">
 		</itemtype>
+		<itemtype generate="true"
+				  code="CountOfUsersCronJob"
+				  jaloclass="training.my.jalo.CountOfUsersCronJob"
+				  extends="CronJob"
+				  autocreate="true">
+		</itemtype>
 	</itemtypes>
 </items>
