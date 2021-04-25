@@ -33,9 +33,9 @@ public class OrderRepository {
         FlexibleSearchQuery flexibleSearchQuery = new FlexibleSearchQuery(query);
         flexibleSearchQuery.setResultClassList(Collections.singletonList(Integer.class));
         SearchResult<Integer> queryResult = flexibleSearchService.search(flexibleSearchQuery);
-        List<Integer> integers = queryResult.getResult();
+        int integer = queryResult.getResult().get(0);
 
-        return integers.get(0);
+        return integer;
     }
 
     public UserModel getUserWithMostOrders(){
