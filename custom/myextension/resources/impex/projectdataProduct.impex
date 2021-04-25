@@ -1,0 +1,7 @@
+INSERT_UPDATE CarProduct; code[unique = true]; name; color(code); weight; catalogVersion(version)
+                        ; car1; car1;      Yellow;  211.2;  Staged
+                        ; car2; car2;       Black;  310.1;  Staged
+                        ; car3; car3;       White;  150.4;  Staged
+
+UPDATE Product[batchmode = true]; name[lang=en]; itemtype(code)[unique = true]
+                                ; The Best Product Ever; CarProduct
