@@ -4,4 +4,49 @@
 -->
 <config xmlns="http://www.hybris.com/cockpit/config">
 
+    <context component="explorer-tree" merge-by="module">
+
+        <n:explorer-tree xmlns:n="http://www.hybris.com/cockpitng/config/explorertree">
+            <n:navigation-node id="Drivers and Cars">
+                <n:type-node id="managedrivers" code="Driver"/>
+                <n:type-node id="managecars" code="Car"/>
+            </n:navigation-node>
+        </n:explorer-tree>
+    </context>
+
+    <context type="Driver" component="listview">
+
+        <list:list-view xmlns:list="http://www.hybris.com/cockpitng/component/listView">
+            <list:column qualifier = "name"/>
+            <list:column qualifier = "dateOfBirth"/>
+            <list:column qualifier = "cars"/>
+        </list:list-view>
+    </context>
+
+    <context type="Driver" component="simple-search">
+
+        <n:simple-search xmlns:n="http://www.hybris.com/cockpitng/config/simplesearch">
+            <n:field name="name"/>
+        </n:simple-search>
+    </context>
+
+    <context type="Car" component="listview">
+
+        <list:list-view xmlns:list="http://www.hybris.com/cockpitng/component/listView">
+            <list:column qualifier = "name"/>
+            <list:column qualifier = "color"/>
+            <list:column qualifier = "year"/>
+            <list:column qualifier = "drivers"/>
+        </list:list-view>
+    </context>
+
+    <context type="Car" component="advanced-search">
+
+        <as:advanced-search xmlns:as="http://www.hybris.com/cockpitng/config/advancedsearch">
+            <as:field-list>
+
+                <as:field name="color" operator="equals" selected="true"/>
+            </as:field-list>
+        </as:advanced-search>
+    </context>
 </config>
