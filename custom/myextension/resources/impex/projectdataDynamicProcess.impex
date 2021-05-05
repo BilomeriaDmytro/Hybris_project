@@ -1,0 +1,35 @@
+INSERT_UPDATE DynamicProcessDefinition;code[unique=true];active;content
+                                      ;addedToCartProcess;true;"<process xmlns="http://www.hybris.de/xsd/processdefinition" name="addedToCartProcess" start="logTimeOfAdding">
+
+<action id="logTimeOfAdding" bean="logTimeOfAdding">
+<transition name="OK" to="waitForStatusChange"/>
+<transition name="NOK" to="processFailed"/>
+</action>
+
+<action id="checkStatus" bean="checkStatus">
+<transition name="OK" to="waitForStatusChange"/>
+<transition name="NOK" to="processFailed"/>
+<!--<transition name="WAIT" to="waitForStatusChange"/>-->
+</action>
+
+<wait id="waitForStatusChange" then="checkStatus" prependProcessCode="false" >
+<case event="event">
+<choice id="CartEntryRemoval" then="productRemoved"/>
+<choice id="Ordered" then="productOrdered"/>
+</case>
+
+</wait>
+
+<action id="productOrdered" bean="productOrdered">
+<transition name="OK" to="processFinished"/>
+<transition name="NOK" to="processFailed"/>
+</action>
+
+<action id="productRemoved" bean="productRemoved">
+<transition name="OK" to="processFinished"/>
+<transition name="NOK" to="processFailed"/>
+</action>
+
+<end id="processFailed" state="FAILED">Process failed</end>
+<end id="processFinished" state="SUCCEEDED">Process finished</end>
+</process>"
