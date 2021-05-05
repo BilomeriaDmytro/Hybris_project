@@ -1,0 +1,23 @@
+INSERT_UPDATE Currency;isocode[unique=true]; name
+                      ;EUR;EUR
+INSERT_UPDATE Employee;uid[unique=true];name;sessionLanguage(isocode);sessionCurrency(isocode);password
+                      ;employee;employee;en;EUR;1111
+                      ;employee2;employee2;en;EUR;1111
+INSERT_UPDATE Order; code[unique = true]; date[dateformat=dd.MM.yyyy];currency(isocode); user(name)
+                   ;order1;15.04.2021;EUR;employee2
+                   ;order2;16.04.2021;EUR;employee2
+                   ;order3;17.04.2021;EUR;employee
+INSERT_UPDATE Cart; code[unique = true]; date[dateformat=dd.MM.yyyy];currency(isocode); user(name)
+                  ;cart1;15.04.2021;EUR;employee2
+                  ;cart2;16.04.2021;EUR;employee2
+                  ;cart3;17.04.2021;EUR;employee
+INSERT_UPDATE Catalog; name[unique=true][lang=en];id
+                     ; catalogA;catalogA
+INSERT_UPDATE CatalogVersion; version[unique=true]; active; catalog(id)
+                            ; Active; true;catalogA
+INSERT_UPDATE Product; code[unique = true]; name;catalogVersion(version)[default=Active]
+                     ; car1; car1
+                     ; car2; car2
+                     ; car3; car3
+INSERT_UPDATE Unit; code[unique = true];unitType
+                  ;unit1;type1
