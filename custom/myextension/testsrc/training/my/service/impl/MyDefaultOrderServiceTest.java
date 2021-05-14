@@ -19,7 +19,7 @@ public class MyDefaultOrderServiceTest extends ServicelayerTest {
     @Resource
     private MyOrderService myOrderService;
 
-    final private String IMPEX_FILE_PATH = "C:\\Users\\Dmitriy\\hybris-commerce\\hybris\\bin\\custom\\myextension\\testsrc\\training\\my\\service\\impl\\test-impex\\orderServiceTest.impex";
+    final private String IMPEX_FILE_PATH = "C:\\Users\\Dmitriy\\hybris-commerce\\hybris\\bin\\custom\\myextension\\testsrc\\test-impex\\orderServiceTest.impex";
 
     @Before
     public void setup()
