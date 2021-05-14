@@ -95,4 +95,20 @@
         <aop:pointcut id="transactionServiceOperation" expression="execution(* training.my.service.TransactionService.*(..))"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="transactionServiceOperation"/>
     </aop:config>
+
+    <!-- Product cache region -->
+    <alias name="defaultProductCacheRegion" alias="productCacheRegion"/>
+    <bean name="defaultProductCacheRegion" class="de.hybris.platform.regioncache.region.impl.EHCacheRegion">
+        <constructor-arg name="name" value="productCacheRegion" />
+        <constructor-arg name="maxEntries" value="30000" />
+        <constructor-arg name="evictionPolicy" value="LRU" />
+        <property name="handledTypes">
+            <array>
+                <value>1</value>
+            </array>
+        </property>
+    </bean>
+    <bean id="productCacheRegionRegistrar" class="de.hybris.platform.regioncache.region.CacheRegionRegistrar">
+        <constructor-arg ref="productCacheRegion"/>
+    </bean>
 </beans>
