@@ -1,0 +1,9 @@
+INSERT_UPDATE Currency;isocode[unique=true]; name
+                      ;EUR;EUR
+INSERT_UPDATE Employee;uid[unique=true];name;sessionLanguage(isocode);sessionCurrency(isocode);password
+                      ;employee;employee;en;EUR;1111
+                      ;employee2;employee2;en;EUR;1111
+INSERT_UPDATE Order; code[unique = true]; date[dateformat=dd.MM.yyyy];currency(isocode); user(name)
+                   ;order1;15.04.2021;EUR;employee2
+                   ;order2;16.04.2021;EUR;employee2
+                   ;order3;17.04.2021;EUR;employee
