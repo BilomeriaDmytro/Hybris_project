@@ -17,15 +17,16 @@
 		</enumtype>
 	</enumtypes>
 
-	<relations>
-		<relation code="FilmActorRelation" localized="false">
-			<deployment table="FilmsActors" typecode="20003"/>
-			<sourceElement qualifier="actors" type="Actor" cardinality="many"/>
-			<targetElement qualifier="films" type="Film" cardinality="many"/>
-		</relation>
-	</relations>
-
 	<itemtypes>
+		<itemtype code="User" autocreate="false" generate="false">
+			<attributes>
+				<attribute qualifier="age" type="java.lang.Integer">
+					<modifiers read="true" write="true"/>
+					<persistence type="property"/>
+				</attribute>
+			</attributes>
+		</itemtype>
+
 		<itemtype code="CarProduct" extends="Product">
 			<attributes>
 				<attribute qualifier="weight" type="java.lang.Float">
@@ -37,13 +38,21 @@
 				</attribute>
 			</attributes>
 		</itemtype>
+    <itemtype code="Film" extends="GenericItem">
+        <deployment table="Film" typecode = "20001" />
+     </itemtype>
 
-		<itemtype code="Film" extends="GenericItem">
-			<deployment table="Film" typecode = "20001" />
-		</itemtype>
-
-		<itemtype code="Actor" extends="GenericItem">
-			<deployment table="Actor" typecode="20002"/>
-		</itemtype>
+      <itemtype code="Actor" extends="GenericItem">
+        <deployment table="Actor" typecode="20002"/>
+      </itemtype>
 	</itemtypes>
+
+	<relations>
+		<relation code="FilmActorRelation" localized="false">
+			<deployment table="FilmsActors" typecode="20003"/>
+			<sourceElement qualifier="actors" type="Actor" cardinality="many"/>
+			<targetElement qualifier="films" type="Film" cardinality="many"/>
+		</relation>
+	</relations>
+
 </items>
