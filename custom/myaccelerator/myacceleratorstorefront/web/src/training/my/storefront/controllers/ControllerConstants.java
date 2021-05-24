@@ -16,6 +16,7 @@ import de.hybris.platform.acceleratorcms.model.components.SimpleResponsiveBanner
 import de.hybris.platform.acceleratorcms.model.components.SubCategoryListComponentModel;
 import de.hybris.platform.cms2.model.contents.components.CMSLinkComponentModel;
 import de.hybris.platform.cms2lib.model.components.ProductCarouselComponentModel;
+import training.my.core.model.NumOfOrdersCMSComponentModel;
 import training.my.core.model.NumOfUsersCMSComponentModel;
 
 
@@ -59,6 +60,7 @@ public interface ControllerConstants
 
 			// Added
 			String NumOfUsersComponent = _Prefix + NumOfUsersCMSComponentModel._TYPECODE + _Suffix;
+			String NumOfOrdersComponent = _Prefix + NumOfOrdersCMSComponentModel._TYPECODE + _Suffix;
 		}
 	}
 
