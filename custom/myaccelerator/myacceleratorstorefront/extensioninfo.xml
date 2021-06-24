@@ -12,6 +12,7 @@
         
         <requires-extension name="smarteditaddon"/>
         <requires-extension name="acceleratorstorefrontcommons"/>
+        <requires-extension name="myextension"/>
                         		
         
         

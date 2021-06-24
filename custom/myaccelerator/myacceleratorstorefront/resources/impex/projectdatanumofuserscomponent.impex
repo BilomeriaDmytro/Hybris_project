@@ -1,0 +1,14 @@
+$contentCatalog=electronicsContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+
+INSERT_UPDATE NumOfUsersCMSComponent;uid[unique=true];$contentCV[unique=true]
+                                    ;NumOfUsersComponent;
+
+INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='LandingPage2Template'];validComponentTypes(code)
+                             ;BottomHeaderSlotName;;NumOfUsersCMSComponent
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];active;cmsComponents(uid)
+                         ;;BottomHeaderSlot;true;NumOfUsersComponent
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='homepage'];contentSlot(uid,$contentCV)[unique=true]
+                                ;;numOfUsers-homepage;BottomHeaderSlotName;;BottomHeaderSlot

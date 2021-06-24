@@ -29,7 +29,26 @@
 
     <itemtypes>
 
-        <!-- Add your item definitions here -->
+        <!-- Custom cms component -->
+        <itemtype code="NumOfUsersCMSComponent" extends="SimpleCMSComponent"
+                  jaloclass="training.my.core.jalo.NumOfUsersCMSComponent">
+
+            <attributes>
+                <attribute qualifier="content" type="localized:java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="NumOfOrdersCMSComponent" extends="SimpleCMSComponent"
+                  jaloclass="training.my.core.jalo.NumOfOrdersCMSComponent">
+
+            <attributes>
+                <attribute qualifier="content" type="localized:java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
 
         <!-- TypeGroups are for structure of this file only -->
         <typegroup name="Apparel">
