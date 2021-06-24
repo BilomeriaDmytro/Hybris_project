@@ -14,7 +14,6 @@
            http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!-- Default -->
-
     <bean id="myextensionSystemSetup" class="training.my.setup.MyextensionSystemSetup">
         <constructor-arg ref="myextensionService"/>
     </bean>
@@ -26,7 +25,6 @@
     </bean>
 
     <!-- Repositories -->
-
     <bean id="orderRepository" class="training.my.repository.OrderRepository">
         <property name="flexibleSearchService" ref="flexibleSearchService"/>
     </bean>
@@ -36,7 +34,6 @@
     </bean>
 
     <!-- Services -->
-
     <bean id="myOrderService" class="training.my.service.impl.MyDefaultOrderService">
         <property name="orderRepository" ref="orderRepository"/>
     </bean>
@@ -58,6 +55,11 @@
         </property>
     </bean>
 
+    <!-- Facade -->
+    <bean id="defaultProductDataFacade" class="training.my.facades.impl.DefaultProductDataFacade">
+        <property name="productConverter" ref="productConverter"/>
+    </bean>
+  
     <!-- Age interceptor for user type -->
     <bean id="ageValidateInterceptor" class="training.my.service.interceptors.user.AgeValidateInterceptor" autowire="byName"/>
     <bean id="ageValidateInterceptorMapping"
@@ -111,4 +113,5 @@
     <bean id="productCacheRegionRegistrar" class="de.hybris.platform.regioncache.region.CacheRegionRegistrar">
         <constructor-arg ref="productCacheRegion"/>
     </bean>
+
 </beans>
