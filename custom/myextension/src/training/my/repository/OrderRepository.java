@@ -33,8 +33,8 @@ public class OrderRepository {
         FlexibleSearchQuery flexibleSearchQuery = new FlexibleSearchQuery(query);
         flexibleSearchQuery.setResultClassList(Collections.singletonList(Integer.class));
         SearchResult<Integer> queryResult = flexibleSearchService.search(flexibleSearchQuery);
-        int integer = queryResult.getResult().get(0);
 
+        int integer = queryResult.getResult().get(0);
         return integer;
     }
 

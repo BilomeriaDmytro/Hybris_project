@@ -24,5 +24,4 @@ public class DefaultProductDataFacade implements ProductDataFacade {
     public void setProductConverter(Converter<ProductModel, ProductData> productConverter) {
         this.productConverter = productConverter;
     }
-
 }

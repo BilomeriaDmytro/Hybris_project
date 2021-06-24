@@ -1,0 +1,20 @@
+INSERT_UPDATE ServicelayerJob;code[unique=true];springId[unique=true]
+                             ; myJobPerformable; myJobPerformable
+                             ; countOfUsersJobPerformable; countOfUsersJobPerformable
+
+INSERT_UPDATE MyCronJob; code[unique=true];job(code); active
+                       ;myJobPerformable;myJobPerformable;true
+
+INSERT_UPDATE CountOfUsersCronJob; code[unique=true];job(code); active
+                       ;countOfUsersJobPerformable;countOfUsersJobPerformable;true
+
+INSERT_UPDATE Trigger;cronjob(code)[unique=true];active;cronExpression
+                     ;myJobPerformable;true;0 0/2 0 ? * * *
+                     ;countOfUsersJobPerformable;true;0 0/2 0 ? * * *
+
+INSERT_UPDATE CompositeEntry  ;code[unique=true]  ;executableCronJob(code)
+                              ;myJobEntry;myJobPerformable
+                              ;countOfUsersJobEntry;countOfUsersJobPerformable
+
+INSERT_UPDATE CompositeCronJob  ;code[unique=true];job(code);compositeEntries(code);sessionUser(uid)[default=admin];sessionLanguage(isocode)[default=en]
+                                ;compositeCronJob;compositeJobPerformable;myJobEntry,countOfUsersJobEntry

@@ -10,6 +10,7 @@
            http://www.springframework.org/schema/aop
            http://www.springframework.org/schema/aop/spring-aop.xsd">
 
+    <!-- Default -->
     <bean id="myextensionSystemSetup" class="training.my.setup.MyextensionSystemSetup">
         <constructor-arg ref="myextensionService"/>
     </bean>
@@ -20,12 +21,22 @@
         <property name="flexibleSearchService" ref="flexibleSearchService"/>
     </bean>
 
+    <!-- Repositories -->
     <bean id="orderRepository" class="training.my.repository.OrderRepository">
         <property name="flexibleSearchService" ref="flexibleSearchService"/>
     </bean>
 
+    <bean id="userRepository" class="training.my.repository.UserRepository">
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+    </bean>
+
+    <!-- Services -->
     <bean id="myOrderService" class="training.my.service.impl.MyDefaultOrderService">
         <property name="orderRepository" ref="orderRepository"/>
+    </bean>
+
+    <bean id="myUserService" class="training.my.service.impl.MyDefaultUserService">
+        <property name="userRepository" ref="userRepository"/>
     </bean>
 
     <!-- Product data populator -->
@@ -46,7 +57,7 @@
     <bean id="defaultProductDataFacade" class="training.my.facades.impl.DefaultProductDataFacade">
         <property name="productConverter" ref="productConverter"/>
     </bean>
-
+  
     <!-- Age interceptor for user type -->
     <bean id="ageValidateInterceptor" class="training.my.service.interceptors.user.AgeValidateInterceptor" autowire="byName"/>
     <bean id="ageValidateInterceptorMapping"
@@ -56,8 +67,20 @@
     </bean>
 
     <!-- CartEntryListener -->
-    <bean id="addToCartListener" class="training.my.events.addToCartListener" parent="abstractEventListener">
+    <!--<bean id="addToCartListener" class="training.my.events.addToCartListener" parent="abstractEventListener">
         <property name="modelService" ref="modelService"/>
+    </bean>-->
+    <bean id="addToCartListener" class="training.my.events.addToCartUpgradedListener" parent="abstractEventListener">
+        <property name="modelService" ref="modelService"/>
+        <property name="businessProcessService" ref="businessProcessService"/>
     </bean>
+
+    <!-- Process definition -->
+    <bean id="addToCartProcessResource" class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+        <property name="resource" value="classpath:/process/addedToCart.xml"/>
+    </bean>
+
+    <!-- Process actions -->
+    <import resource="classpath:/process/actions/addedToCart-spring.xml"/>
 
 </beans>

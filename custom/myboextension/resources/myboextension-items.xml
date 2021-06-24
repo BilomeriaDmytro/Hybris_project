@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ Copyright (c) 2020 SAP SE or an SAP affiliate company. All rights reserved
+-->
+<!--
+	ATTENTION: This is just an example file. You have to edit it according to your needs.
+-->
+
+<items 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:noNamespaceSchemaLocation="items.xsd">
+
+	<relations>
+		<relation code="DriverCarRelation" localized="false">
+			<deployment table="DriversCars" typecode="20006"/>
+			<sourceElement qualifier="driver" type="Driver" cardinality="many"/>
+			<targetElement qualifier="car" type="Car" cardinality="many"/>
+		</relation>
+	</relations>
+
+	<itemtypes>
+		<itemtype code="Driver" extends="GenericItem">
+			<deployment table="Driver" typecode="20004"/>
+			<attributes>
+
+				<attribute qualifier="name" type="java.lang.String">
+					<persistence type="property"/>
+					<modifiers optional="false" initial="true"/>
+				</attribute>
+
+				<attribute qualifier="dateOfBirth" type="java.util.Date">
+					<persistence type="property"/>
+					<modifiers optional="false" initial="true"/>
+				</attribute>
+
+				<attribute qualifier="cars" type="Car">
+					<persistence type="property"/>
+				</attribute>
+			</attributes>
+		</itemtype>
+
+		<itemtype code="Car" extends="GenericItem">
+			<deployment table="Car" typecode="20005"/>
+			<attributes>
+				<attribute qualifier="name" type="java.lang.String">
+					<persistence type="property"/>
+					<modifiers optional="false" initial="true"/>
+				</attribute>
+
+				<attribute qualifier="color" type="Colors">
+					<persistence type="property"/>
+					<modifiers optional="false" initial="true"/>
+				</attribute>
+
+				<attribute qualifier="year" type="java.lang.Integer">
+					<persistence type="property"/>
+					<modifiers optional="false" initial="true"/>
+				</attribute>
+
+				<attribute qualifier="drivers" type="Driver">
+					<persistence type="property"/>
+				</attribute>
+			</attributes>
+		</itemtype>
+	</itemtypes>
+
+</items>

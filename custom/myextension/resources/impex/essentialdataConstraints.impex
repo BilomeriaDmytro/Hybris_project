@@ -1,0 +1,2 @@
+INSERT MinConstraint; id[unique = true];annotation;target;qualifier;active;value;
+                    ; MinUserAgeValue;javax.validation.constraints.Min;de.hybris.platform.core.model.user.UserModel;age;true;21
